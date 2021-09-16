@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+NC='\033[0m'
+BOLD='\033[1m'
+RED='\033[0;31m'
+
+_check_command() {
+    if ! type -p $1 >/dev/null; then
+        echo -e "\n${RED}ERROR${NC}: ${BOLD}${1}${NC} not found on the system"
+        echo -e "please install and try again"
+        exit 1
+    fi
+}
+
+_check_command fold
+_check_command jq
+_check_command shuf
+
+file="${BASH_SOURCE%/*}/quotes.min.json"
+random_index=$(shuf -i 1-$(jq length $file) -n 1)
+
+quote=$(jq -r .[$random_index-1].quote $file)
+by=$(jq -r .[$random_index-1].by $file)
+
+echo -e "\n${quote}" | fold -s
+echo -e "\n~ ${BOLD}${by}${NC}" | fold -s
