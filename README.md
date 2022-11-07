@@ -14,6 +14,12 @@ then type `gh inspire`
 $ gh extension install lakuapik/gh-inspire
 ```
 
+### requirements
+
+1. `jq` https://stedolan.github.io/jq/
+2. `shuf` https://www.gnu.org/software/coreutils/manual/html_node/shuf-invocation.html
+3. `fold` https://www.gnu.org/software/coreutils/manual/html_node/fold-invocation.html
+
 ## screenshot
 
 ![gh-inspire](https://user-images.githubusercontent.com/20186786/133615225-cc3cce2a-ff85-4907-abb6-40c7b9a61c37.gif)
